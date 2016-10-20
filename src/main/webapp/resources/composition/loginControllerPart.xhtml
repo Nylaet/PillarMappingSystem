@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <c:if test="#{!userController.entered}">
+            <div class="clearfix grpelem" id="pu167-4"><!-- group -->
+                <img id="u167-4" alt="Логин" src="resources/images/u167-4.png" data-image-width="60"/><!-- rasterized frame -->
+                <img id="u168-4" alt="Пароль" src="resources/images/u168-4.png" data-image-width="60"/><!-- rasterized frame -->
+            </div>
+        </c:if>
+        <div class="clearfix grpelem" id="pu169"><!-- group -->
+
+            <c:if test="#{!userController.entered}">
+                <h:form>
+                    <div id="u171-3">
+                        <h:inputText value="#{userController.current.login}" id="login" />
+                        <p:watermark for="login" value="Логин" />
+                    </div>
+                    <div id="u172-3">
+                        <h:inputSecret value="#{userController.current.passwordHash}" id="password" />
+                        <p:watermark for="password" value="Пароль" />
+                    </div>
+                    <h:commandLink action="#{userController.login()}">
+                        <div class="clip_frame" id="u169"><!-- image -->
+                            <img class="block" id="u169_img" src="resources/images/logout.png" alt="" data-image-width="32" data-image-height="32"/>
+                        </div>
+                    </h:commandLink>
+                </h:form>
+            </c:if>
+            <c:if test="#{userController.entered}">
+                <h:form>
+                    <div id="u171-3">
+                        <h:outputText value="#{userController.current.login}" style="color: white;" />
+                    </div>
+                    <h:commandLink action="#{userController.logout()}">
+                        <div class="clip_frame" id="u169"><!-- image -->
+                            <img class="block" id="u169_img" src="resources/images/logout.png" alt="" data-image-width="32" data-image-height="32"/>
+                        </div>
+                    </h:commandLink>
+                </h:form>
+            </c:if>
+        </div>
+    </cc:implementation>
+</html>
